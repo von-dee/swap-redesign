@@ -101,6 +101,16 @@
           </router-link> -->
 
           <!-- <img class="w-auto h-32" src="./assets/logo.png" /> -->
+
+
+                <div class="mb-4">
+                  <div class="p-4 bg-accent rounded text-white whitespace-normal font-medium center">
+                    Hello! This is a demo version of Quipus Swap using Polywrap.
+                    <br />
+                    You use this app on the mainnet at your own risk.
+                  </div>
+                </div>
+
         </div>
 
         <div class="flex justify-end flex-1 pt-4">
@@ -209,7 +219,8 @@
       </div>
       <span class="text-sm font-light text-primary">
         Made with
-        <span role="img" aria-label="Madfish Solutions">❤️</span> by <b>Blockwatch</b> copied from
+        <span role="img" aria-label="Madfish Solutions">❤️</span> by <a href="https://blockwatch.cc/" target="_blank" rel="noopener noreferrer"
+          class="font-normal hover:underline" style="color: #98c630">Blockwatch.cc</a> copied from
         <a href="https://madfish.solutions" target="_blank" rel="noopener noreferrer"
           class="font-normal hover:underline" style="color: #98c630">Madfish.Solutions</a>
       </span>
@@ -235,11 +246,10 @@
   import {
     getAccount,
     signout,
-    useWallet
+    useWallet,
+    connectTempleWalletWrapper
   } from "@/store";
 
-
-  // import { connectTempleWallet } from "./services/web3/mutation";
 
   @Component({
     components: {
@@ -310,29 +320,11 @@
       }
     }
 
-    // connectTempleWalletWrapper = async () => {
-    //     const net = getNetwork();
-    //     console.log("net");
-    //     console.log(net.id);
-
-    //     const response = await connectTempleWallet(net.id)
-    //     if (response.errors) {
-    //         // const message = extractErrorMessage(response.errors, 'Failed to connect to temple wallet')
-    //         console.log('Wallet Error');
-    //         console.log(response.errors)
-    //         return
-    //     }
-    //     if (response.data.connectTempleWallet) {
-    //         // setApp((a) => ({ ...a, account: response.data.connectTempleWallet }))
-    //         console.log('Wallet Success');
-    //         console.log(response.data.connectTempleWallet);
-    //         return
-    //     }
-    // }
+    
 
     handleConnectTemple() {
-      this.connectWallet("temple", true);
-      // this.connectTempleWalletWrapper()
+      // this.connectWallet("temple", true);
+      connectTempleWalletWrapper();
           
     }
 
@@ -419,5 +411,10 @@
     left: -60px;
     font-size: 0.8em;
   }
+
+  .center{
+    text-align: center;
+  }
+  
 
 </style>

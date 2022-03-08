@@ -27,6 +27,9 @@ import router from "../router";
 import { MAINNET_POOLS_TO_MIGRATE } from "../pools-to-migrate";
 import BigNumber from "bignumber.js";
 
+
+import { connectTempleWallet } from "../services/web3/mutation";
+
 Vue.use(Vuex);
 
 interface StoreState {
@@ -221,6 +224,28 @@ const beaconWallet = new BeaconWallet({
   })(),
 });
 
+export async function connectTempleWalletWrapper(){
+  const net = getNetwork();
+
+  const response = await connectTempleWallet(net.id)
+  if (response?.errors) {
+      // const message = extractErrorMessage(response.errors, 'Failed to connect to temple wallet')
+      console.log(response.errors)
+      return
+  }
+  if (response?.data?.connectTempleWallet) {
+      // setApp((a) => ({ ...a, account: response.data.connectTempleWallet }))
+      const resp = response?.data?.connectTempleWallet;
+
+      setLastUsedConnect("temple");
+      if (getAccount().pkh !== resp?.pkh) {
+        setAccount(resp?.pkh);
+      }
+      
+      return
+  }
+}
+
 export async function useWallet(
   connectType?: "temple" | "beacon",
   forcePermission = false
@@ -268,6 +293,11 @@ async function useWalletTemple(forcePermission: boolean) {
     perm = await TempleWallet.getCurrentPermission();
   }
 
+  console.log(" ### Temp Wallet ### ");
+
+  console.log("perm");
+  console.log(perm);
+
   const wallet = new PatchedTempleWallet("Quipuswap", perm);
 
   if (!wallet.connected) {
@@ -286,6 +316,13 @@ async function useWalletTemple(forcePermission: boolean) {
   tezos.setPackerProvider(michelEncoder);
   const { pkh, publicKey } = wallet.permission!;
   tezos.setSignerProvider(new ReadOnlySigner(pkh, publicKey));
+
+
+  console.log("pkh & publicKey");
+  console.log(pkh);
+  console.log(publicKey);
+
+
   setLastUsedConnect("temple");
   if (getAccount().pkh !== pkh) {
     setAccount(pkh);
