@@ -14,7 +14,7 @@
           content="Become a Liquidity provider and earn trading fees (0.3% from each swap) + baking rewards from staking your XTZ.  Learn more about the Investment tab from <a href='https://madfish.crunch.help/quipu-swap/i-have-added-liquidity-to-quipu-swap-how-much-will-i-earn-what-is-the-apy-of-your-dex' target='_blank' rel='nofollow noopener'>this article</a>."
         />
       </router-link>
-      <router-link class="nav-item" active-class="active" to="/governance">
+      <!-- <router-link class="nav-item" active-class="active" to="/governance">
         <span>Govern</span>
         <Tooltip
           position="corner"
@@ -23,7 +23,7 @@
       </router-link>
       <a class="nav-item" href="https://analytics.quipuswap.com/">
         <span>Stats</span>
-      </a>
+      </a> -->
     </div>
 
     <!-- <div v-if="infoBannerDisplayed" class="relative flex items-center py-4 pl-4 pr-8 mt-6 mb-4 text-gray-800 rounded bg-accent">

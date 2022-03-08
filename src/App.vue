@@ -119,7 +119,7 @@
                   <div class="flex-1" />
                 </button>
 
-                <button
+                <!-- <button
                   class="flex items-center w-64 h-12 text-primary transition duration-300 ease-in-out border rounded-md border-primary hover:text-primary"
                   @click="handleConnectBeacon">
                   <div class="flex justify-center flex-1">
@@ -129,7 +129,7 @@
                     Connect another wallet
                   </div>
                   <div class="flex-1"/>
-                </button>
+                </button> -->
               </div>
             </template>
 
@@ -207,9 +207,9 @@
           Subscribe
         </a>
       </div>
-      <span class="text-sm font-light text-white">
+      <span class="text-sm font-light text-primary">
         Made with
-        <span role="img" aria-label="Madfish Solutions">❤️</span> by
+        <span role="img" aria-label="Madfish Solutions">❤️</span> by <b>Blockwatch</b> copied from
         <a href="https://madfish.solutions" target="_blank" rel="noopener noreferrer"
           class="font-normal hover:underline" style="color: #98c630">Madfish.Solutions</a>
       </span>
